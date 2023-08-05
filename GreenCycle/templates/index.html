@@ -72,26 +72,140 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-    }
+        }
 
-    .text-container {
-        flex: 1;
-        padding-right: 5px; /* To add some spacing between text and image */
-    }
+        .text-container {
+            flex: 1;
+            padding-right: 5px; /* To add some spacing between text and image */
+        }
 
-    .image-container {
-        flex: 1;
+        .image-container {
+            flex: 1;
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        .image-container img {
+            max-width: 500;
+            height: 450;
+        }
+        p{
+            margin-left: 15px;
+        }
+        .form-container{
+            padding: 2%;
+            margin-left: 40%;
+        }
+        h2{
         text-align: center;
-        margin-top: 5%;
-    }
+        background-color: cadetblue;
+        justify-content: center;
+        }
+        .form1{
+            width:200px;
+            height:15px;
+            padding: 10px;
+            font-size: 16px;
+        background-color: #ECECEC;
+        color: #000;
+        
+        }
+        ::placeholder{
+            color:#333;
+        }
+        .butn{
+            margin-left: 7%;
+            height:30px;
+            width:80px;
+        }
+        #text1{
+            background-color: #ECECEC;
+            
+        }
+    
+        /* Add your other CSS styles here */
 
-    .image-container img {
-        max-width: 500;
-        height: 450;
-    }
-    p{
-        margin-left: 15px;
-    }
+        /* Style for the footer section */
+        .footer-dark {
+            padding: 50px 0;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Container and row styling for layout */
+        .footer-dark .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-dark .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Styling for each column item */
+        .footer-dark .item {
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .footer-dark .item h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-dark .item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-dark .item ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-dark .item ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-dark .item p {
+            line-height: 1.5;
+        }
+
+        /* Styling for social icons */
+        .footer-dark .social a {
+            color: #fff;
+            font-size: 24px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        /* Add hover effect to social icons */
+        .footer-dark .social a:hover {
+            color: #999;
+        }
+
+        /* Styling for the copyright text */
+        .footer-dark .copyright {
+            margin-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+        ul.row {
+        display: flex;
+        justify-content:flex-end;
+        }
+        .logo .tab {
+            display: inline-block;
+            justify-content: center;
+        }
+        .logo{
+            padding: 20px 40px;
+        }
+
         
     </style>
 </head>
@@ -129,14 +243,64 @@
                     </p>
                 </div>
                 <div class="image-container">
-                    <img src="{% static 'green.jpg' %}" alt="Green Cycle Recycling" width="500" height="450">
+                    <img src="{% static 'green.jpg' %}" alt="Green Cycle Recycling">
+                </div>
+            </div>
+        </section>
+        <section id="feedback">
+            <div class="form-content">
+                <h2>FeedBack Form<br></h2>
+                <div class="form-container">
+                   <form action="/" method="post">
+                        {% csrf_token %}
+                        <label for="Name"></label>
+                        <input type="text" id="name" name="usrname" class="form1" placeholder="Enter your Name">
+                        <br><br>
+                        <label for="Emai"></label>
+                        <input type="email" id="email" name="usremail" class="form1" placeholder="Enter Email Id">
+                        <br><br>
+                        <textarea name="feedback" id="text1" cols="20" rows="10" placeholder="type here hor feedback"></textarea><br><br>
+                        <button type="submit"> Submit </button>
+                   </form> 
                 </div>
             </div>
         </section>
     </main>
     
-    <footer>
-        <p>&copy; 2023 Green Cycle Recycling Hub. All rights reserved.</p>
-    </footer>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">Database Management</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">More products</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Description</h3>
+                        <p>A website made to help people in railway ticket booking. Follow us to know more!</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Soham Shah © </p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+   
+</body>
+</html>
 </body>
 </html>
