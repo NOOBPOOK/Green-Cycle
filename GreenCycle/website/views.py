@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 
 def home(request):
-    return HttpResponse("This is my home page")
+    return render(request, "index.html")
 
 def paper(request):
     return HttpResponse("This is my paper")

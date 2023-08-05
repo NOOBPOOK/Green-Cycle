@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -106,12 +106,12 @@
         <!-- Navigation Bar -->
         <nav>
             <ul>
-                <li><a href="#home">Paper</a></li>
-                <li><a href="#about">Clothes</a></li>
-                <li><a href="#services">Plastic</a></li>
-                <li><a href="#gallery">E-waste</a></li>
-                <li><a href="#contact">Glass</a></li>
-                <li><a href="#faq">Metal</a></li>
+                <li><a href="/paper">Paper</a></li>
+                <li><a href="/clothes">Clothes</a></li>
+                <li><a href="/plastic">Plastic</a></li>
+                <li><a href="/ewaste">E-waste</a></li>
+                <li><a href="/glass">Glass</a></li>
+                <li><a href="/metal">Metal</a></li>
             </ul>
         </nav>
     </header>
@@ -129,7 +129,7 @@
                     </p>
                 </div>
                 <div class="image-container">
-                    <img src="green.jpg" alt="Green Cycle Recycling" width="500" height="450">
+                    <img src="{% static 'green.jpg' %}" alt="Green Cycle Recycling" width="500" height="450">
                 </div>
             </div>
         </section>
