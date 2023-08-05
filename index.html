@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Cycle - One Stop Recycling Hub</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        /* Add a simple animation to the navigation buttons */
+        nav a {
+            position: relative;
+        }
+
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #77c361;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+        .color1{
+            border: #fff;
+            color: #fff;
+            text-align: center;
+            background-color: cadetblue;
+            font-size: larger;
+        }
+        .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .text-container {
+        flex: 1;
+        padding-right: 5px; /* To add some spacing between text and image */
+    }
+
+    .image-container {
+        flex: 1;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+    .image-container img {
+        max-width: 500;
+        height: 450;
+    }
+    p{
+        margin-left: 15px;
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="color1">
+        <br>
+        <h1>Green Cycle-one stop recycling hub</h1>
+        <br>
+    </div>
+    <header>
+        
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li><a href="#home">Paper</a></li>
+                <li><a href="#about">Clothes</a></li>
+                <li><a href="#services">Plastic</a></li>
+                <li><a href="#gallery">E-waste</a></li>
+                <li><a href="#contact">Glass</a></li>
+                <li><a href="#faq">Metal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="content-container">
+                <!-- Description on the left -->
+                <div class="text-container">
+                    <h1>Welcome to Green Cycle</h1>
+                    <p>
+                        Green Cycle is your one-stop recycling hub, dedicated to promoting eco-friendly practices and
+                        sustainable waste management. We strive to make recycling easy and accessible for everyone.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae natus libero, quae dicta harum explicabo illum consequuntur neque illo iusto quidem voluptas porro magni modi pariatur tenetur facilis mollitia, nam atque, sint quam assumenda. Nihil, quas! Accusantium ratione harum voluptatem in quis libero reprehenderit fuga eaque, maxime eligendi deleniti nemo!
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="green.jpg" alt="Green Cycle Recycling" width="500" height="350">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Green Cycle Recycling Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
