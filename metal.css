@@ -1,0 +1,231 @@
+   /* Add your other CSS styles here */
+
+    /* Styling for the card section */
+    section {
+        padding: 50px 0;
+    }
+
+    /* Styling for the card group container */
+    .card-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    /* Styling for the individual card */
+    .card {
+        position: relative;
+        margin: 10px;
+        width: 300px;
+        height: auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+     
+    .card:hover {
+        transform: translate(-5px);
+    }
+    .tex{
+        padding: 2%;
+    }
+    /* Styling for the card image */
+   
+
+    /* Styling for the card body */
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        line-height: 1.5;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+    }
+
+    /* Styling for the section containing the form */
+    section {
+        padding: 50px 0;
+    }
+
+    /* Styling for the form content container */
+    .form-content {
+        text-align: center;
+    }
+
+    /* Styling for the form container */
+    .form-container {
+        display: inline-block;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the form table */
+    .form-table {
+        width: 500px;
+        height: 350px;
+    }
+
+    /* Styling for the table rows */
+    .form-table tr {
+        line-height: 2;
+    }
+
+    /* Styling for the labels */
+    .form-table label {
+        font-weight: bold;
+    }
+
+    /* Styling for the input fields and textarea */
+    .form1, #text1, #image {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Styling for the submit button */
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Add hover effect to the submit button */
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .formbold-main-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+  
+    .formbold-form-wrapper {
+      margin: 0 auto;
+      max-width: 600px;
+      width: 100%;
+      background: white;
+    }
+  
+    .formbold-input-flex {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+    .formbold-input-flex > div {
+      width: 50%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .formbold-textarea {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  
+    .formbold-form-input {
+      width: 100%;
+      padding-bottom: 10px;
+      border: none;
+      border-bottom: 1px solid #DDE3EC;
+      background: #FFFFFF;
+      font-weight: 500;
+      font-size: 16px;
+      color: #07074D;
+      outline: none;
+      resize: none;
+    }
+    .formbold-form-input::placeholder {
+      color: #536387;
+    }
+    .formbold-form-input:focus {
+      border-color: #6A64F1;
+    }
+    .formbold-form-label {
+      color: #07074D;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .formbold-form-input:focus + .formbold-form-label {
+      color: #6A64F1;
+    }
+  
+    .formbold-input-file {
+      margin-top: 30px;
+    }
+    .formbold-input-file input[type="file"] {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      z-index: -1;
+    }
+    .formbold-input-file .formbold-input-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+  
+    .formbold-filename-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .formbold-filename {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      line-height: 24px;
+      color: #536387;
+      margin-left: 15px;
+    }
+    .formbold-filename svg {
+      cursor: pointer;
+    }
+  
+    .formbold-btn {
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 12px 25px;
+      border: none;
+      font-weight: 500;
+      background-color: #6A64F1;
+      color: white;
+      cursor: pointer;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      margin-left: 300px;
+    }
+    .formbold-btn:hover {
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
