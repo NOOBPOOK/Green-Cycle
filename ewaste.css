@@ -110,6 +110,7 @@
         display: block;
         margin-top: 5px;
       }
+      
   
     .formbold-btn {
       font-size: 16px;
@@ -127,48 +128,3 @@
     .formbold-btn:hover {
       box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
     }
-    /* Apply common styles to input fields */
-.formbold-form-input {
-    margin-right: 8px; /* Add some space between checkboxes and labels */
-  }
-  
-  /* Style for the labels */
-  label {
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  /* Style for the checkboxes */
-  .formbold-form-input[type="checkbox"] {
-    appearance: none; /* Hide the default checkbox */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  
-  .formbold-form-input[type="checkbox"]:checked {
-    border-color: #007bff; /* Change border color when checked */
-    background-color: #007bff; /* Add a blue background when checked (you can customize this) */
-  }
-  
-  /* Style the checkmark inside the checkbox */
-  .formbold-form-input[type="checkbox"]:checked::before {
-    content: "\2713"; /* Checkmark symbol */
-    display: block;
-    text-align: center;
-    color: #fff; /* Checkmark color */
-    line-height: 20px;
-  }
-  
-  /* Position the checkmark inside the checkbox */
-  .formbold-form-input[type="checkbox"]:checked::before {
-    position: relative;
-    top: -3px;
-    left: -1px;
-  }
-  

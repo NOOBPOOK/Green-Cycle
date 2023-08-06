@@ -95,6 +95,12 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+    .error-message {
+        color: red;
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+      }
 
     /* Styling for the submit button */
     button[type="submit"] {

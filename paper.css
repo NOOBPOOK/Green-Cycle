@@ -39,7 +39,12 @@
       display: flex;
       flex-direction: column-reverse;
     }
-  
+    .error-message {
+        color: red;
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+      }
     .formbold-form-input {
       width: 100%;
       padding-bottom: 10px;

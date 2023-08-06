@@ -55,15 +55,16 @@
                       <label for="email" class="formbold-form-label"> Mail </label>
                     </div>
                     <div>
-                      <input
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        placeholder="(319) 555-0115"
-                        class="formbold-form-input"
-                      />
-                      <label for="phone" class="formbold-form-label"> Phone </label>
-                    </div>
+                        <input
+                          type="text"
+                          name="phone"
+                          id="phone"
+                          placeholder="(319) 555-0115"
+                          class="formbold-form-input"
+                        />
+                        <label for="phone" class="formbold-form-label"> Phone </label>
+                        <span id="phoneErrorMessage" class="error-message"></span>
+                      </div>
                   </div>
                   <div class="formbold-input-flex">
                     <div>
@@ -119,30 +120,44 @@
         
           <script>
             document.addEventListener('DOMContentLoaded', function () {
-              const form = document.querySelector('form');
-              const selectedFileName = document.getElementById('selectedFileName');
-              const fileInput = document.getElementById('upload');
-          
-              fileInput.addEventListener('change', function () {
-                if (fileInput.files.length > 0) {
-                  selectedFileName.textContent = fileInput.files[0].name;
-                } else {
-                  selectedFileName.textContent = 'Click to select a file';
-                }
-              });
-          
-              form.addEventListener('submit', function (event) {
-                const fileName = fileInput.value;
-                const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
-          
-                if (!allowedExtensions.exec(fileName)) {
-                  alert('Please select a file with a valid extension (PNG, JPG, JPEG).');
-                  event.preventDefault(); // Prevent the form from being submitted
-                }
-                // Your additional form validation logic can go here if needed
-              });
+                const phoneInput = document.getElementById('phone');
+                const phoneErrorMessage = document.getElementById('phoneErrorMessage');
+
+                phoneInput.addEventListener('input', function () {
+                    const phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-digit characters
+
+                    if (phoneNumber.length !== 10) {
+                        phoneErrorMessage.textContent = 'Phone number should be exactly 10 digits long.';
+                    } else {
+                        phoneErrorMessage.textContent = '';
+                    }
+                });
+                
+                // Your form submit event listener here
+                const form = document.querySelector('form');
+                const selectedFileName = document.getElementById('selectedFileName');
+                const fileInput = document.getElementById('upload');
+
+                fileInput.addEventListener('change', function () {
+                    if (fileInput.files.length > 0) {
+                        selectedFileName.textContent = fileInput.files[0].name;
+                    } else {
+                        selectedFileName.textContent = 'Click to select a file';
+                    }
+                });
+
+                form.addEventListener('submit', function (event) {
+                    const fileName = fileInput.value;
+                    const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+
+                    if (!allowedExtensions.exec(fileName)) {
+                        alert('Please select a file with a valid extension (PNG, JPG, JPEG).');
+                        event.preventDefault(); // Prevent the form from being submitted
+                    }
+                    // Your additional form validation logic can go here if needed
+                });
             });
-          </script>
+        </script>
     </main>
 </body>
 </html>
