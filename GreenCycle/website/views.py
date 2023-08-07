@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from website.models import Feedback
+from website.models import Feedback, MetalRequest, PaperRequest, GlassRequest, PlasticRequest, ClothesRequest, EwasteRequest
 import datetime
 from google.oauth2.credentials import Credentials
 import os
@@ -20,6 +20,12 @@ FEEDBACK_SUBJECT = "Thanks for your Feedback"
 DEFAULT_SCOPES = ["https://mail.google.com/"]
 DEFAULT_CREDS_TOKEN_FILE = "token.json"
 DEFAULT_CLIENT_SECRETS_FILE = "C:/Users/hp/Documents/GitHub/Green-Cycle/credentials.json"
+
+METALS = ["Aluminium","Brass","Copper","Alloy","Alloy Steel","Iron","Bronze","Ferrous","Other",""]
+PAPER = ["Paper",""]
+GLASS = ["Glass", ""]
+PLASTIC = ["Miscellaneous Plastics", "Polistyrene Styrofoam", "Polypropylene", "Low-Density Polythylene", "Polyvinyl Chloride","High-Density Polythylene","Polyethylene Perephthalate",""]
+EWASTE = ["Computer and telecommunication appliances","Small appliances","Major appliances",""]
 
 def import_google():
     try:
@@ -46,7 +52,7 @@ def get_gmail_credentials(
     token_file: str = None,
     client_secrets_file: str = None,
     scopes = None,
-) -> Credentials:
+    ) -> Credentials:
     """Get credentials."""
     # From https://developers.google.com/gmail/api/quickstart/python
     Request, Credentials = import_google()
@@ -153,7 +159,10 @@ def home(request):
         username = request.POST["usrname"]
         email = request.POST["usremail"]
         review = request.POST["feedback"]
-        feedback = Feedback(name=username, email=email, feedback=review, date = datetime.date.today())
+        feedback = Feedback(name=username, 
+                            email=email, 
+                            feedback=review, 
+                            date = datetime.date.today())
         try:
             feedback.save()
             gmail = Gmail()
@@ -169,21 +178,228 @@ def home(request):
         return render(request, "index.html")
 
 def paper(request):
-    return HttpResponse("This is my paper")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        cate = request.POST["Category"]
+        category = PAPER[int(cate)-1]
+        desc = request.POST["message"]
+        feedback = PaperRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category=category,
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the paper quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, "index.html")
+    else:
+        return render(request, "paper.html")
 
 def clothes(request):
-    return HttpResponse("This is my colthes")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        category = []
+        try:
+            category.append(request.POST["clothes1"])
+        except:
+            pass
+        try:
+            category.append(request.POST["clothes2"])
+        except:
+            pass
+        try:
+            category.append(request.POST["clothes3"])
+        except:
+            pass
+        try:
+            category.append(request.POST["clothes4"])
+        except:
+            pass
+        desc = request.POST["message"]
+        feedback = ClothesRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category = ' ,'.join(category),
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the clothes quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, "index.html")
+    else:
+        return render(request, "clothes.html")
 
 def plastic(request):
-    return HttpResponse("This is my plastic")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        cate = request.POST["Category"]
+        category = PLASTIC[int(cate)-1]
+        desc = request.POST["message"]
+        feedback = PlasticRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category=category,
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the plastic quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, "index.html")
+    else:
+        return render(request, "plastic.html")
 
 def ewaste(request):
-    return HttpResponse("This is my ewaste")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        cate = request.POST["Category"]
+        category = EWASTE[int(cate)-1]
+        desc = request.POST["message"]
+        feedback = MetalRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category=category,
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the Ewaste quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, 'index.html')
+    else:
+        return render(request, "ewaste.html")
 
 def metal(request):
-    return HttpResponse("This is my metal")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        cate = request.POST["Category"]
+        category = METALS[int(cate)-1]
+        desc = request.POST["message"]
+        feedback = MetalRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category=category,
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the metal quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, 'index.html')
+    else:
+        return render(request, "metal.html")
 
 def glass(request):
-    return HttpResponse("This is my ewaste")
+    if request.method == "POST":
+        fname = request.POST["firstname"]
+        lname = request.POST["lastname"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        kg = request.POST["Quantity"]
+        cate = request.POST["Category"]
+        category = GLASS[int(cate)-1]
+        desc = request.POST["message"]
+        feedback = GlassRequest(fname=fname, 
+                                lname=lname, 
+                                email=email, 
+                                phone=phone, 
+                                kg=kg, 
+                                category=category,
+                                description=desc, 
+                                date=datetime.date.today())
+        try:
+            feedback.save()
+            gmail = Gmail()
+            send = gmail.run(message=f"Thank you for providing the details of the glass quantity you currently possess. We appreciate your cooperation in sharing this information with us.Your information will assist us in better understanding your requirements and enable us to tailor our services to meet your needs effectively.", 
+                            to=str(email), 
+                            subject="GreenCycle Contrib")
+            if send:
+                print("Message sent")
+            else:
+                print("Couldn't send message")
+            return render(request, "index.html")
+        except Exception as e:
+            print(f"One Error Occured {e}")
+            return render(request, "index.html")
+    else:
+        return render(request, "glass.html")
 
 # Create your views here.

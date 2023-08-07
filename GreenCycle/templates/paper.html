@@ -1,0 +1,192 @@
+{% extends 'metal.html'%}
+{%load static%}
+
+{%block card1img%}
+{%static 'img5.jpg'%}
+{%endblock card1img%}
+
+{%block card1tit%}
+Newspaper
+{%endblock card1tit%}
+
+{%block card1des%}
+Paper is a fundamental material that has been crucial to human civilization for centuries. Derived from plant fibers, it is used for writing, printing, packaging, and art. Recycling efforts have helped to reduce environmental impact. From ancient scrolls to modern books, paper remains an essential medium for knowledge dissemination and communication.
+{%endblock card1des%}
+
+{%block card2img%}
+{%static 'img6.jpg'%}
+{%endblock%}
+
+{%block card2tit%}
+Books
+{%endblock card2tit%}
+
+{%block card2des%}
+Paper has been an essential medium for artistic expression. Artists use various paper types like watercolor paper, sketch paper, and handmade paper to create stunning artworks using techniques like drawing, painting, printmaking, and collage. Additionally, paper is utilized in crafting, origami, and papercraft projects, allowing for endless creative possibilities.
+{%endblock card2des%}
+
+{%block card3img%}
+{%static 'img7.jpg'%}
+{%endblock%}
+
+{%block card3tit%}
+TestPapers
+{%endblock card3tit%}
+
+{%block card3des%}
+Books are a treasure trove of knowledge, imagination, and inspiration. They come in various genres, from fiction to non-fiction, catering to diverse interests. Reading books enhances vocabulary, critical thinking, and empathy. Classic novels, contemporary bestsellers, and educational texts enrich our lives, offering a window into different worlds and perspectives.
+{%endblock card3des%}
+
+{%block text%}
+Before paper as we know it existed, people communicated through pictures and symbols carved into tree bark, painted on cave walls, and marked on papyrus or clay tablets.
+
+About 2,000 years ago, inventors in China took communication to the next level, crafting cloth sheets to record their drawings and writings. And paper, as we know it today, was born!
+
+Paper was first made in Lei-Yang, China by Ts'ai Lun, a Chinese court official. In all likelihood, Ts'ai mixed mulberry bark, hemp and rags with water, mashed it into pulp, pressed out the liquid and hung the thin mat to dry in the sun.
+
+During the 8th century, about 300 years after Ts’ai’s discovery, the secret traveled to the region that is now the Middle East. Yet, it took another 500 years for papermaking to enter Europe. One of the first paper mills was built in Spain, and soon, paper was being made at mills all across Europe.
+
+Then, with paper easier to make, paper was used for printing important books, bibles, and legal documents.
+{%endblock text%}
+
+{%block form%}
+<section>
+    <div class="formbold-main-wrapper">
+      <!-- Author: FormBold Team -->
+      <!-- Learn More: https://formbold.com -->
+      <div class="formbold-form-wrapper">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="Jane"
+                class="formbold-form-input"
+              />
+              <label for="firstname" class="formbold-form-label"> First name </label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="Cooper"
+                class="formbold-form-input"
+              />
+              <label for="lastname" class="formbold-form-label"> Last name </label>
+            </div>
+          </div>
+  
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="jhon@mail.com"
+                class="formbold-form-input"
+              />
+              <label for="email" class="formbold-form-label"> Mail </label>
+            </div>
+            <div>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="(319) 555-0115"
+                  class="formbold-form-input"
+                />
+                <label for="phone" class="formbold-form-label"> Phone </label>
+                <span id="phoneErrorMessage" class="error-message"></span>
+              </div>
+          </div>
+          <div class="formbold-input-flex">
+            <div>
+                <label for="number" class="formbold-form-label">Quantity in kgs</label>
+                <input type="number" name="Quantity">
+            </div>
+            <div>
+              <label for="rating" class="formbold-form-label"> Category </label>
+              <select name="Category" id="rating" class="formbold-form-input">
+               
+                <option value="2"></option>
+                <option value="1">Paper</option>
+                
+              </select>
+            </div>
+          </div>
+  
+          <div class="formbold-textarea">
+            <textarea
+              rows="4"
+              name="message"
+              id="message"
+              placeholder="Write your message..."
+              class="formbold-form-input"
+            ></textarea>
+            <label for="message" class="formbold-form-label"> Message </label>
+          </div>
+  
+          <label for="upload" class="formbold-input-label">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Replace this with your own SVG icon content for the cloud icon -->
+              <path d="M5 5L15 10L5 15V5Z" fill="currentColor"/>
+            </svg>
+            <span id="selectedFileName">Click to select a file</span>
+          </label>
+          <input type="file" name="upload" id="upload" style="display: none;">
+          
+          
+  
+          <button class="formbold-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const phoneInput = document.getElementById('phone');
+        const phoneErrorMessage = document.getElementById('phoneErrorMessage');
+
+        phoneInput.addEventListener('input', function () {
+            const phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-digit characters
+
+            if (phoneNumber.length !== 10) {
+                phoneErrorMessage.textContent = 'Phone number should be exactly 10 digits long.';
+            } else {
+                phoneErrorMessage.textContent = '';
+            }
+        });
+        
+        // Your form submit event listener here
+        const form = document.querySelector('form');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const fileInput = document.getElementById('upload');
+
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                selectedFileName.textContent = fileInput.files[0].name;
+            } else {
+                selectedFileName.textContent = 'Click to select a file';
+            }
+        });
+
+        form.addEventListener('submit', function (event) {
+            const fileName = fileInput.value;
+            const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+
+            if (!allowedExtensions.exec(fileName)) {
+                alert('Please select a file with a valid extension (PNG, JPG, JPEG).');
+                event.preventDefault(); // Prevent the form from being submitted
+            }
+            // Your additional form validation logic can go here if needed
+        });
+    });
+</script>
+{%endblock form%}

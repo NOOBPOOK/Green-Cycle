@@ -4,76 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Cycle - One Stop Recycling Hub</title>
+    <link rel = "stylesheet" href={% static 'index.css'%}>
+    {% block style%}
     <style>
-        /* Add your CSS styling here */
-        body {
-            font-family: cursive, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline-block;
-            margin-right: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        /* Add a simple animation to the navigation buttons */
-        nav a {
-            position: relative;
-        }
-
-        nav a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: #77c361;
-            transition: width 0.3s ease;
-            z-index: -1;
-        }
-
-        nav a:hover::before {
-            width: 100%;
-        }
-        .color1{
-            border: #fff;
-            color: #fff;
-            text-align: center;
-            background-color: cadetblue;
-            font-size: larger;
-        }
         .content-container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        }
-
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            }
         .text-container {
             flex: 1;
             padding-right: 5px; /* To add some spacing between text and image */
@@ -84,7 +22,7 @@
             text-align: center;
             margin-top: 5%;
         }
-
+    
         .image-container img {
             max-width: 500;
             height: 450;
@@ -122,92 +60,8 @@
             background-color: #ECECEC;
             
         }
-    
-        /* Add your other CSS styles here */
-
-        /* Style for the footer section */
-        .footer-dark {
-            padding: 50px 0;
-            background-color: #333;
-            color: #fff;
-        }
-
-        /* Container and row styling for layout */
-        .footer-dark .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .footer-dark .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* Styling for each column item */
-        .footer-dark .item {
-            margin-bottom: 30px;
-            padding: 0 15px;
-        }
-
-        .footer-dark .item h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .footer-dark .item ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-dark .item ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-dark .item ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .footer-dark .item p {
-            line-height: 1.5;
-        }
-
-        /* Styling for social icons */
-        .footer-dark .social a {
-            color: #fff;
-            font-size: 24px;
-            margin-right: 10px;
-            text-decoration: none;
-        }
-
-        /* Add hover effect to social icons */
-        .footer-dark .social a:hover {
-            color: #999;
-        }
-
-        /* Styling for the copyright text */
-        .footer-dark .copyright {
-            margin-top: 20px;
-            text-align: center;
-            color: #999;
-        }
-        ul.row {
-        display: flex;
-        justify-content:flex-end;
-        }
-        .logo .tab {
-            display: inline-block;
-            justify-content: center;
-        }
-        .logo{
-            padding: 20px 40px;
-        }
-
-        
     </style>
+    {%endblock%}
 </head>
 <body>
     <div class="color1">
@@ -229,7 +83,8 @@
             </ul>
         </nav>
     </header>
-
+    
+    {%block main%}
     <main>
         <section id="home">
             <div class="content-container">
@@ -266,6 +121,7 @@
             </div>
         </section>
     </main>
+    {% endblock%}
     
     <div class="footer-dark">
         <footer>

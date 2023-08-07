@@ -1,0 +1,188 @@
+{% extends 'metal.html'%}
+{%load static%}
+
+{%block card1img%}
+{%static 'plastic1.jpg'%}
+{%endblock card1img%}
+
+{%block card1tit%}
+Plastic Bottle
+{%endblock card1tit%}
+
+{%block card1des%}
+Plastic bottles are widely used containers made from various types of plastic. They are commonly used for packaging beverages, water, and personal care products. However, their improper disposal contributes to environmental pollution, making recycling and responsible waste management crucial for minimizing their impact on the planet.
+{%endblock card1des%}
+
+{%block card2img%}
+{%static 'plastic2.jpg'%}
+{%endblock%}
+
+{%block card2tit%}
+Plastic Toys
+{%endblock card2tit%}
+
+{%block card2des%}
+Plastic toys are popular playthings made from various types of plastic. They come in a wide range of shapes, sizes, and colors, appealing to children of all ages. While plastic toys are durable and affordable, there is increasing concern about their environmental impact and potential health hazards due to certain chemicals.
+{%endblock card2des%}
+
+{%block card3img%}
+{%static 'plastic3.jpg'%}
+{%endblock%}
+
+{%block card3tit%}
+Plastic Electronics
+{%endblock card3tit%}
+
+{%block card3des%}
+Plastic electronics, also known as organic electronics, involve the use of organic materials in electronic devices. These lightweight and flexible components have diverse applications, such as flexible displays, sensors, and wearable electronics. Plastic electronics offer the potential for cost-effective and eco-friendly solutions, driving innovation in the electronics industry.
+{%endblock card3des%}
+
+{%block text%}
+Plastic waste management is a pressing environmental challenge with profound implications for our planet's well-being. Non-biodegradable plastic pollutes land and oceans, threatening ecosystems and wildlife. To address this issue, comprehensive solutions are necessary. Reducing plastic consumption, encouraging recycling, implementing Extended Producer Responsibility (EPR) programs, and promoting eco-friendly alternatives like biodegradable plastics are critical steps. Public education and awareness campaigns foster a culture of responsible waste disposal. Advanced technologies, such as chemical recycling, offer innovative approaches. Policymakers play a crucial role in enacting regulations that support sustainable practices and bans on single-use plastics. International cooperation facilitates sharing knowledge and best practices, creating a collective effort to combat plastic pollution. Through these combined efforts, we can work towards a circular economy, preserving resources and safeguarding our planet's health for generations to come.
+{%endblock text%}
+
+{%block form%}
+<section>
+    <div class="formbold-main-wrapper">
+      <!-- Author: FormBold Team -->
+      <!-- Learn More: https://formbold.com -->
+      <div class="formbold-form-wrapper">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="Jane"
+                class="formbold-form-input"
+              />
+              <label for="firstname" class="formbold-form-label"> First name </label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="Cooper"
+                class="formbold-form-input"
+              />
+              <label for="lastname" class="formbold-form-label"> Last name </label>
+            </div>
+          </div>
+  
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="jhon@mail.com"
+                class="formbold-form-input"
+              />
+              <label for="email" class="formbold-form-label"> Mail </label>
+            </div>
+            <div>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="(319) 555-0115"
+                  class="formbold-form-input"
+                />
+                <label for="phone" class="formbold-form-label"> Phone </label>
+                <span id="phoneErrorMessage" class="error-message"></span>
+              </div>
+          </div>
+          <div class="formbold-input-flex">
+            <div>
+                <label for="number" class="formbold-form-label">Quantity in kgs</label>
+                <input type="number" name="Quantity">
+            </div>
+            <div>
+              <label for="rating" class="formbold-form-label"> Category </label>
+              <select name="Category" id="rating" class="formbold-form-input">
+                <option value="8"></option>
+                <option value="7">Polyethylene Terephthalate (PETE or PET)</option>
+                <option value="6">High-Density Polyethylene (HDPE)</option>
+                <option value="5">Polyvinyl Chloride (PVC)</option>
+                <option value="4">Low-Density Polyethylene (LDPE)</option>
+                <option value="3">Polypropylene (PP)</option>
+                <option value="2">Polystyrene or Styrofoam (PS)</option>
+                <option value="1">Miscellaneous plastics</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="formbold-textarea">
+            <textarea
+              rows="4"
+              name="message"
+              id="message"
+              placeholder="Write your message..."
+              class="formbold-form-input"
+            ></textarea>
+            <label for="message" class="formbold-form-label"> Message </label>
+          </div>
+  
+          <label for="upload" class="formbold-input-label">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Replace this with your own SVG icon content for the cloud icon -->
+              <path d="M5 5L15 10L5 15V5Z" fill="currentColor"/>
+            </svg>
+            <span id="selectedFileName">Click to select a file</span>
+          </label>
+          <input type="file" name="upload" id="upload" style="display: none;">
+          
+          
+  
+          <button class="formbold-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const phoneInput = document.getElementById('phone');
+        const phoneErrorMessage = document.getElementById('phoneErrorMessage');
+
+        phoneInput.addEventListener('input', function () {
+            const phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-digit characters
+
+            if (phoneNumber.length !== 10) {
+                phoneErrorMessage.textContent = 'Phone number should be exactly 10 digits long.';
+            } else {
+                phoneErrorMessage.textContent = '';
+            }
+        });
+        
+        // Your form submit event listener here
+        const form = document.querySelector('form');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const fileInput = document.getElementById('upload');
+
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                selectedFileName.textContent = fileInput.files[0].name;
+            } else {
+                selectedFileName.textContent = 'Click to select a file';
+            }
+        });
+
+        form.addEventListener('submit', function (event) {
+            const fileName = fileInput.value;
+            const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+
+            if (!allowedExtensions.exec(fileName)) {
+                alert('Please select a file with a valid extension (PNG, JPG, JPEG).');
+                event.preventDefault(); // Prevent the form from being submitted
+            }
+            // Your additional form validation logic can go here if needed
+        });
+    });
+</script>
+{%endblock form%}

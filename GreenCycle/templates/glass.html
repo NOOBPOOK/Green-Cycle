@@ -1,0 +1,187 @@
+{% extends 'metal.html'%}
+{%load static%}
+
+{%block card1img%}
+{%static 'img8.jpg'%}
+{%endblock card1img%}
+
+{%block card1tit%}
+Glass Bottle
+{%endblock card1tit%}
+
+{%block card1des%}
+Glass is a transparent, versatile material made from heating sand and other additives. Its unique properties, such as transparency, strength, and impermeability, make it ideal for windows, mirrors, containers, and lenses. From skyscrapers to delicate artworks, glass finds applications in architecture, technology, and decoration, adding beauty and functionality to our lives.
+{%endblock card1des%}
+
+{%block card2img%}
+{%static 'img9.jpg'%}
+{%endblock%}
+
+{%block card2tit%}
+Glass Window
+{%endblock card2tit%}
+
+{%block card2des%}
+In the quiet corners of an ancient forest, where the sunlight weaves intricate patterns through the foliage, a hidden realm of magical creatures awakens. They are the guardians of nature's secrets, with emerald eyes that glimmer like the starlit night. Only the pure-hearted can glimpse their world, where dreams take flight.
+{%endblock card2des%}
+
+{%block card3img%}
+{%static 'img10.jpg'%}
+{%endblock%}
+
+{%block card3tit%}
+Glass Slide
+{%endblock card3tit%}
+
+{%block card3des%}
+Amidst the bustling city streets, a hidden underground club comes to life after dusk. Neon lights flicker, and the air pulses with electrifying beats. Mysterious figures sway to the rhythm, their faces obscured by masks. It's a realm of anonymity, where ordinary individuals transform into mesmerizing dancers, escaping reality's grasp.
+{%endblock card3des%}
+
+{%block text%}
+Glass, an extraordinary material, has captivated human imagination and innovation for millennia. It is a solid substance with a unique amorphous structure, lacking a regular crystal lattice. The most common form of glass is made by heating a mixture of silica (sand), soda ash, and limestone to a high temperature, forming a viscous liquid, which is then cooled rapidly to solidify without crystallizing.The transparent and smooth nature of glass grants it a remarkable quality: the ability to transmit light with exceptional clarity. From ancient glassblowers crafting delicate vessels to modern technologies enabling fiber-optic communication, glass has transformed human society.The mesmerizing qualities of glass are apparent in architectural marvels like the soaring skyscrapers, adorned with vast windows, allowing natural light to flood into offices and homes. Stained glass windows, intricately adorned with vibrant colors, narrate captivating stories in places of worship and historical buildings.Beyond aesthetics, glass serves as an essential medium for scientific discoveries. Laboratory glassware facilitates precise measurements and experiments, while telescopes and microscopes use optical glass to reveal the mysteries of the universe and the microscopic world.
+
+Glass is integral to the daily conveniences we often take for granted. From drinking glasses and mirrors to smartphone screens and camera lenses, glass has found its way into nearly every aspect of our lives. Its thermal and electrical insulating properties make it indispensable for household appliances, insulation, and electronics.
+{%endblock text%}
+
+{%block form%}
+<section>
+    <div class="formbold-main-wrapper">
+      <!-- Author: FormBold Team -->
+      <!-- Learn More: https://formbold.com -->
+      <div class="formbold-form-wrapper">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="Jane"
+                class="formbold-form-input"
+              />
+              <label for="firstname" class="formbold-form-label"> First name </label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="Cooper"
+                class="formbold-form-input"
+              />
+              <label for="lastname" class="formbold-form-label"> Last name </label>
+            </div>
+          </div>
+  
+          <div class="formbold-input-flex">
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="jhon@mail.com"
+                class="formbold-form-input"
+              />
+              <label for="email" class="formbold-form-label"> Mail </label>
+            </div>
+            <div>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="(319) 555-0115"
+                  class="formbold-form-input"
+                />
+                <label for="phone" class="formbold-form-label"> Phone </label>
+                <span id="phoneErrorMessage" class="error-message"></span>
+              </div>
+              
+          </div>
+          <div class="formbold-input-flex">
+            <div>
+                <label for="number" class="formbold-form-label">Quantity in kgs</label>
+                <input type="number" name="Quantity">
+            </div>
+            <div>
+              <label for="rating" class="formbold-form-label"> Category </label>
+              <select name="Category" id="rating" class="formbold-form-input">
+                
+                <option value="2"></option>
+                <option value="1">Glass</option>
+                
+              </select>
+            </div>
+          </div>
+  
+          <div class="formbold-textarea">
+            <textarea
+              rows="4"
+              name="message"
+              id="message"
+              placeholder="Write your message..."
+              class="formbold-form-input"
+            ></textarea>
+            <label for="message" class="formbold-form-label"> Message </label>
+          </div>
+  
+          <label for="upload" class="formbold-input-label">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Replace this with your own SVG icon content for the cloud icon -->
+              <path d="M5 5L15 10L5 15V5Z" fill="currentColor"/>
+            </svg>
+            <span id="selectedFileName">Click to select a file</span>
+          </label>
+          <input type="file" name="upload" id="upload" style="display: none;">
+          
+          
+  
+          <button class="formbold-btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const phoneInput = document.getElementById('phone');
+        const phoneErrorMessage = document.getElementById('phoneErrorMessage');
+
+        phoneInput.addEventListener('input', function () {
+            const phoneNumber = phoneInput.value.replace(/\D/g, ''); // Remove non-digit characters
+
+            if (phoneNumber.length !== 10) {
+                phoneErrorMessage.textContent = 'Phone number should be exactly 10 digits long.';
+            } else {
+                phoneErrorMessage.textContent = '';
+            }
+        });
+        
+        // Your form submit event listener here
+        const form = document.querySelector('form');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const fileInput = document.getElementById('upload');
+
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                selectedFileName.textContent = fileInput.files[0].name;
+            } else {
+                selectedFileName.textContent = 'Click to select a file';
+            }
+        });
+
+        form.addEventListener('submit', function (event) {
+            const fileName = fileInput.value;
+            const allowedExtensions = /(\.png|\.jpg|\.jpeg)$/i;
+
+            if (!allowedExtensions.exec(fileName)) {
+                alert('Please select a file with a valid extension (PNG, JPG, JPEG).');
+                event.preventDefault(); // Prevent the form from being submitted
+            }
+            // Your additional form validation logic can go here if needed
+        });
+    });
+</script>
+{%endblock form%}
