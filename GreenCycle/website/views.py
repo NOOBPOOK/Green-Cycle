@@ -307,7 +307,7 @@ def ewaste(request):
         cate = request.POST["Category"]
         category = EWASTE[int(cate)-1]
         desc = request.POST["message"]
-        feedback = MetalRequest(fname=fname, 
+        feedback = EwasteRequest(fname=fname, 
                                 lname=lname, 
                                 email=email, 
                                 phone=phone, 
