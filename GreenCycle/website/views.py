@@ -9,6 +9,8 @@ import base64
 from pydantic import Field
 from googleapiclient.discovery import Resource
 from pydantic import BaseModel
+import sqlite3
+from sqlite3 import Error
 
 FEEDBACK_MSG = """
 We greatly value your opinion, and we're reaching out to request your valuable feedback on your recent experience with us.
@@ -95,11 +97,24 @@ def build_resource_service(
     credentials: Credentials = None,
     service_name: str = "gmail",
     service_version: str = "v1",
-) -> Resource:
+    ) -> Resource:
     """Build a Gmail service."""
     credentials = credentials or get_gmail_credentials()
     builder = import_googleapiclient_resource_builder()
     return builder(service_name, service_version, credentials=credentials)
+
+def sql_connect():
+    name = MetalRequest._meta.db_table
+    conn = None
+    try:
+        conn = sqlite3.connect("C:/Users/hp/Documents/GitHub/Green-Cycle/GreenCycle/db.sqlite3")
+    except Error as e:
+        print(e)
+    cur = conn.cursor()
+    cur.execute(f"SELECT * FROM {name}")
+    row = cur.fetchall()
+    for i in row:
+        print(i)
 
 class Gmail(BaseModel):
     api_resource: Resource = Field(default_factory=build_resource_service)
@@ -155,6 +170,7 @@ class Gmail(BaseModel):
             raise Exception(f"An error occurred: {error}")
 
 def home(request):
+    sql_connect()
     if request.method == "POST":
         username = request.POST["usrname"]
         email = request.POST["usremail"]
